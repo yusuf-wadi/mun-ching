@@ -6,7 +6,7 @@
     - attempted to get transcripts from alexanderstreet.com, but that failed miserably (javascript, login, no institutional access)
     - realized I could use GPT3 itself to create the conversations. they would be just general enough and well written enough to <br>
       to pass as real prompt and response
-    - removed all whitespaces and blank lines from the text file in the command line
+    - removed all whitespaces and blank lines from the text file in the command line (grep "\S" file.txt)
     - used the file JSONLprep.py to turn the text file transcripts.txt into a suitable JSONL file
 
 
