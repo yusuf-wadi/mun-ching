@@ -1,8 +1,4 @@
-import os
 
-#{"prompt":"","completion":""}
-
-import json
 
 jsonl = open("data/gpt_finetuning_data.jsonl", "a")
 
@@ -24,8 +20,3 @@ f.close()
 
 
     
-
-# with open('gpt_finetuning_data.jsonl', 'w') as outfile:
-#     for i in range(1000):
-#         json.dump({'prompt': , 'completion' : }, outfile)
-#         outfile.write('\n')
