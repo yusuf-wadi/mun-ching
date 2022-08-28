@@ -1,5 +1,5 @@
 # Project Run Down
-- Finetuning GPT-3 to talk more as a therapist or conversational partner would
+ Finetuning GPT-3 to talk more as a therapist or conversational partner would
 
 ## Steps
  ### Data Collection
