@@ -4,17 +4,18 @@ import os
 
 import json
 
-jsonl = open("gpt_finetuning_data.jsonl", "w")
+jsonl = open("data/gpt_finetuning_data.jsonl", "w")
 
 
 
-with open("transcripts.txt","r") as f:
+with open("data/transcripts.txt","r") as f:
     f_iter = iter(f)
     for i,line in enumerate(f):
-            line = line.strip('\n')
-            json.dump({'prompt': line , 'completion': next(f_iter).strip('\n')}, jsonl)  
-            jsonl.write('\n')
-        
+        if i%2==0:           # every even (0, 2, 4...) row
+            jsonl.write('{"prompt":' + '"' + line.strip('\n') + '"' + ',')
+        else:                # every odd (1, 3...) row
+           jsonl.write('"completion":' + '"' + line.strip('\n') + '"' +'}' + '\n')
+          
     
 jsonl.close()
 f.close()
