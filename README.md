@@ -9,10 +9,11 @@
       to pass as real prompt and response
   - removed all whitespaces and blank lines from the text file in the command line (grep "\S" file.txt)
   - used the file JSONLprep.py to turn the text file transcripts.txt into a suitable JSONL file
-
+  - created a script to generate therapist sessions with gpt3 itself
 
 
 ```python
+
 jsonl = open("data/gpt_finetuning_data.jsonl", "a")
 
 
@@ -33,4 +34,5 @@ f.close()
 
   ### Fine tuning
   - opened the project folder in wsl, set my OPENAI_API_KEY variable, then ran the finetuning script
-  - very light training file, cost 25cents, gave me strange results.
+  - trained once in the beginning, trained again with many more examples
+
