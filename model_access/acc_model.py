@@ -8,10 +8,10 @@ with open("response.txt", "w") as f:
     completion = openai.Completion.create(
         model= cur_model,
         prompt= YOUR_PROMPT,
-        temperature = 0.85,
+        temperature = 0.5,
         presence_penalty = 0.67,
         frequency_penalty = 0.7,
-        max_tokens = 60    
+        max_tokens = 30    
         )
     f.write(completion.choices[0].text)
 
