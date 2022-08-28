@@ -4,11 +4,11 @@ import os
 
 import json
 
-jsonl = open("data/gpt_finetuning_data.jsonl", "w")
+jsonl = open("data/gpt_finetuning_data.jsonl", "a")
 
 
 
-with open("data/transcripts.txt","r") as f:
+with open("data/examplegen.txt","r") as f:
     f_iter = iter(f)
     for i,line in enumerate(f):
         if i%2==0:           # every even (0, 2, 4...) row
