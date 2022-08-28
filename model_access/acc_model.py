@@ -4,7 +4,7 @@ openai.api_key_path = "model_access/key.txt"
 YOUR_PROMPT = input("Enter prompt: ")
 cur_model = "davinci:ft-valley-2022-08-28-00-10-42"
 
-with open("response.txt", "w") as f:
+with open("model_access/response.txt", "w") as f:
     completion = openai.Completion.create(
         model= cur_model,
         prompt= YOUR_PROMPT,
