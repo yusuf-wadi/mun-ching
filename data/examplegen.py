@@ -8,29 +8,34 @@ openai.api_key_path = "model_access/key.txt"
 
 professions = []
 
-with open('data/professions.txt', "r") as f:
+proftxt_path = 'data/text/professions.txt'
+exgen_path = 'data/text/examplegen.txt'
+exgendr_path = 'data/text/examplegen_dirty.txt'
+
+
+with open(proftxt_path, "r") as f:
     professions = f.read().split(',')
 
 # open for read and write
-e = open("data/examplegen_dirty.txt", "r+")
+e = open(exgendr_path, "r+")
 
 # #break da bank
-# for i in range(0,30):
-#     response = openai.Completion.create(
-#             model="text-davinci-002",
-#             max_tokens = 2000,
-#             #randomizing professions to get varied responses W
-#             prompt = "Generate a unique and lengthy conversation between a " + professions[randrange(len(professions))] +  " client and a therapist that follows the flow CLIENT: THERAPIST: . When putting words in quotations use single quotes, and do not deviate from the alternating flow of client to therapist.",
-#             temperature = 0.80,
-#             presence_penalty = 0.7,
-#             frequency_penalty = 0.8,
-#         )
-#     e.write(response.choices[0].text)
+for i in range(0,10):
+    response = openai.Completion.create(
+            model="text-davinci-002",
+            max_tokens = 2000,
+            #randomizing professions to get varied responses W
+            prompt = "Generate a unique and lengthy conversation between a " + professions[randrange(len(professions))] +  " client and a therapist that follows the flow CLIENT: THERAPIST: . When putting words in quotations use single quotes, and do not deviate from the alternating flow of client to therapist.",
+            temperature = 1,
+            presence_penalty = 1,
+            frequency_penalty = 1,
+        )
+    e.write(response.choices[0].text)
 
 
 # opening clean file
 
-a = open("data/examplegen.txt", "w")
+a = open(exgen_path, "w")
 
 data = e.read()
 
@@ -41,7 +46,7 @@ to_replace = {"LAWYER:": "CLIENT:",
               "BARTENDER:": "THERAPIST:",
               "PHYSICIAN ASSISTANT:": "THERAPIST:",
               "\n\n": "\n",
-              ":\n": ":"}
+              ":\n\n": ":"}
 
 for k, v in to_replace.items():
     repl = re.compile(k, re.IGNORECASE)

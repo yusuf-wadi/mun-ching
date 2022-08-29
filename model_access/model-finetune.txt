@@ -1,2 +1,0 @@
-export OPENAI_API_KEY=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
-openai api fine_tunes.create -t "data/gpt_finetuning_data_prepared.jsonl" -m davinci:ft-valley-2022-08-27-21-13-45
