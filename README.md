@@ -46,4 +46,5 @@ f.close()
 
 ### Model Access 
 - _8.28.22_ Currently, the model is accessed through a rudimentary script
+- _8.29.22_ The model is now accessible through a bare tkinter GUI in the tkGUI branch
 
