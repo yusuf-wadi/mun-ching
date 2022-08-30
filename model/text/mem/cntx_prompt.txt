@@ -1,0 +1,5 @@
+Respond to the prompt marked as PROMPT: with the following context marked as CONTEXT:. Allow the response to start with THERAPIST.
+
+CONTEXT: {}
+
+PROMPT: {}
