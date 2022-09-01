@@ -1,54 +1,107 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
-from time import sleep, strftime, time
+from time import sleep
+import json
 
-url_links = "https://search.alexanderstreet.com/ctrn/browse/title"
-url_login = "https://search.alexanderstreet.com/user"
+target = input('Enter target: ')
+auth_ = input('auth required?(y/n): ')
+isUTD = input("is utd?(y/n): ")
+isDL = input("is it a download?(y/n): ")
+utdJSON_path ='crawlers/elems_JSON/utd_els.json'
+elemsJSON_path ='crawlers/elems_JSON/elems.json'
 
-usern = "ymw200000@utdallas.edu"
-pw = "00000000"
+with open(utdJSON_path, "r") as j:
+    utd_els = json.loads(j.read())
+    
+with open(elemsJSON_path, "r") as j:
+    elems = json.loads(j.read())
 
-links=[]
+links = []
 
 # Define Brave path
-brave_path = "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe"
+brave_path = "C:/Program Files/BraveSoftware/Brave-Browser-Nightly/Application/brave.exe"
 options = webdriver.ChromeOptions()
 options.binary_location = brave_path
+
+#set dl options
+prefs = {"download.default_directory" : "C:/Users/thewa/Desktop/projects/computational_neuroscience/AI_ML/projects/mun_ching/crawlers/content", "download.prompt_for_download" : False}
+
+options.add_experimental_option("prefs",prefs)
 
 # Create new automated instance of Brave
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
-#login
-driver.get(url_login)
-
-#enter user
-user_in = driver.find_element("id",'edit-name')
-user_in.send_keys(usern)
-
-#enter pass
-user_pass = driver.find_element("id",'edit-pass')
-user_pass.send_keys(pw)
-
-#submit
-driver.find_element("id",'edit-submit').click()
-
-sleep(1)
-
-#go to links page
-driver.get(url_links)
-
-sleep(3)
-
-results = driver.find_elements("class name", 'search-result-item-info columns large-12 medium-12' )
 
 
-for result in results:
-    links.append(str(result.find_elements("xpath","//a[@href]")))
+def auth():
 
-print(links[0])
+    url_login = elems["url"]
+    # login
+    if isUTD != 'y':
 
-sleep(2)
+        driver.get(url_login)
+        usern = elems["user"]
+        pw = input("Enter pass:")
+        user_in = driver.find_element("id", elems["u_el"])
+        user_in.send_keys(usern)
+
+    # enter pass   
+        user_pass = driver.find_element("id", elems["p_el"])
+        user_pass.send_keys(pw)
+
+        # submit
+        driver.find_element("id", elems["sub_el"]).click()
+
+    else:
+
+        driver.get(target)
+        #user
+        usern=utd_els["user"]
+        user_in = driver.find_element("id", utd_els["u_el"])
+        user_in.send_keys(usern)
+        #pass
+        sleep(1)
+        pw = input("Enter pass:")
+        user_pass = driver.find_element("id", utd_els["p_el"])
+        user_pass.send_keys(pw)
+        #submit
+        driver.find_element("id", utd_els["sub_el"]).click()
+
+        sleep(1)
+
+def getLinks():
+
+    link_el = [input("Paste the element type that has the links if class, class name , if id, id, if name, name, etc: "), input(
+            "Paste that elements name:")]
 
 
 
+    with open('crawlers/links.txt', "w") as l:
+
+        results = driver.find_element(link_el[0],link_el[1])
+        links = results.find_elements("xpath","a[@target='blank']")
+
+        for link in links:
+            if isDL == 'y':
+                link.click()
+            l.write(link.get_attribute("href") + '\n')
+            sleep(1)
+
+    sleep(2)        
+       
+
+if __name__ == '__main__':
+    #check if auth is required
+    if auth_ == 'y':
+        auth()
+
+    driver.get(target)
+
+    getLinks()
+
+    
+    
+
+    
+    
