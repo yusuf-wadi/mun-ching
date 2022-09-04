@@ -1,19 +1,24 @@
 
+import re
 
-jsonl = open("data/gpt_finetuning_data.jsonl", "a")
+jsonl = open("data/gpt_finetuning_data_v2_1.jsonl", "w")
 
 
-with open("data/examplegen.txt", "r") as f:
+with open("crawlers/transcripts_v2_1.txt", "r") as f:
 
     for line in f:
 
-        if "CLIENT:" in line:  # client is prompt
+        line.replace('-','')
 
-            line = line.strip("CLIENT:")
+        if bool(re.match("^CLIENT:",line)):  # client is prompt
+            line.replace('"',"'")
+            line = line.replace("CLIENT:","")
+            line = line.replace("THERAPIST:", "")
             jsonl.write('{"prompt" : ' + '"' + line.strip('\n') + '"' + ' , ')
 
-        elif "THERAPIST:" in line:  # therapist is completion
-
+        elif bool(re.match("^THERAPIST:",line)):  # therapist is completion
+            line.replace('"',"'")
+            line = line.replace("CLIENT:","")
             line = line.replace("THERAPIST:", "")
             jsonl.write('"completion" : ' + '"' +
                         line.strip('\n') + '"' + '}' + '\n')
