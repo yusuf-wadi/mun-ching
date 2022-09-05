@@ -1,0 +1,21 @@
+Enter prompt: Hey Dean.
+
+
+Hi there! How are you doing today?
+
+Enter prompt: I am doing good how about yourself.
+
+
+I'm doing well, thanks for asking. How has your week been?
+
+Enter prompt: It's been quite good actually. Got a lot of things done. Some roadblocks, but honestly, I have begun to shift my perspective, and see roadblocks not as obstacles, but as stepping stones.
+
+That's really great to hear! It sounds like you've had a lot of positive growth this week. Can you tell me more about what has helped you to shift your perspective?
+
+Enter prompt: Mostly listening to lectures, and reflecting on my life throughout the day and in my daily prayers.
+
+
+It sounds like you've been doing a lot of self-reflection this week, and that's really helping you to see things in a new light. Keep up the good work!
+
+Enter prompt: exit session
+PS C:\Users\thewa\Desktop\projects\computational_neuroscience\AI_ML\projects\mun_ching>
