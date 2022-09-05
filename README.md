@@ -18,7 +18,7 @@ Finetuning GPT-3 to talk more as a therapist or conversational partner would
 
 - _8.27.22_ opened the project folder in wsl, set my OPENAI_API_KEY variable, then ran the finetuning script
 - _8.28.22_ trained once in the beginning, trained again with many more examples
-- _3:14 AM 9/5/2022_ Now that the BEEG data has been caught, new finetuning is in order. But the question is, is finetuning really <br>
+- _3:14 AM 9/5/2022_ Now that the BEEG data has been caught, new finetuning is in order. But the question is, is finetuning really 
                       the way to go about this? prompt engineering is already such a powerful tool. Further inquiry and research is required.
 ### Model Access
 
