@@ -6,14 +6,14 @@ Finetuning GPT-3 to talk more as a therapist or conversational partner would
 
 ### Data Collection
 
-- _8.26.22_ attempted to get transcripts from alexanderstreet.com,<br>
-  but that failed miserably (javascript, login, no institutional access)
+- _8.26.22_ Attempted a webscrape to get valuable data  
+  Failed miserably
 - _8.26.22_ realized I could use GPT3 itself to create the conversations. they would be just general enough and well written enough to <br>
   to pass as real prompt and response
 - _8.26.22_ used the file JSONLprep.py to turn the text file transcripts.txt into a suitable JSONL file
 - _8.27.22_ created a script to generate therapist sessions with gpt3 itself
 - _8.27.22_ data is saved and parsed with new methods to comply with jsonl
-- _3:14 AM 9/5/2022_ The big data has been caught. alexanderstreet.com has been conquered. Alhamdulilah. 
+- _3:14 AM 9/5/2022_ The big data has been caught. Alhamdulilah. 
 ### Fine tuning
 
 - _8.27.22_ opened the project folder in wsl, set my OPENAI_API_KEY variable, then ran the finetuning script
@@ -28,4 +28,10 @@ Finetuning GPT-3 to talk more as a therapist or conversational partner would
 ### Adding model memory
 - _2:53 PM 8/30/2022_ As when you talk to most people, they tend to remember the last thing you said. <br>
   As such, I am adding memory to this model through way of contextual prompting. 
-- _3:14 AM 9/5/2022_ Memory has been added by way of prompt engineering and human ingenuity.
+- _3:14 AM 9/5/2022_ Memory has been added by way of prompt engineering and human ingenuity. 
+- _12:01 PM 9/8/2022_ Memory and prompt have been optimized. Time for webapp
+
+### Future Ideas
+from _12:01 PM 9/8/2022_
+- [ ] Make webapp
+- [ ] Figure out a way to finetune and move past full prompt engineering
