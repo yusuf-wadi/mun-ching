@@ -33,7 +33,7 @@ Finetuning GPT-3 to talk more as a therapist or conversational partner would
 
 ### Future Ideas
 from _12:01 PM 9/8/2022_
-- [ ] Make webapp
+- [X] Make webapp
 - [ ] Figure out a way to finetune and move past full prompt engineering
 from _2:29 AM 9/10/2022_
 - [ ] Create search conversation function to optimize memory and return only relevant lines of conversation for summary and context.
